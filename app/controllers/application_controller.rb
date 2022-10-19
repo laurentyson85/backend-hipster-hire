@@ -4,7 +4,8 @@ class ApplicationController < Sinatra::Base
   
   get "/" do
     jobs = Job.all
-    jobs.to_json(include: { companies: { include: :hipsters } }) #eh, this may not get me the jobs of the companies that have no hispters
+    jobs.to_json
+    # jobs.to_json#(include: { companies: { include: :hipsters } }) 
   end
 
   post "/jobs" do
