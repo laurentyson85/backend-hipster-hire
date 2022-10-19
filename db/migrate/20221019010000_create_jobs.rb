@@ -10,5 +10,6 @@ class CreateJobs < ActiveRecord::Migration[6.1]
       t.boolean :expired
       t.integer :hipster_id
       t.integer :company_id
+    end
   end
 end
