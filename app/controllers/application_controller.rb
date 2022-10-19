@@ -4,10 +4,9 @@ class ApplicationController < Sinatra::Base
   
   
   get "/" do
-    jobs = Job.all    
-    # {a: 1}.to_json
-    jobs.includes(company: :hipsters).to_json(include: :company)
-    
+    jobs = Job.all 
+    jobs.includes(company: :hipsters).to_json(include: {company: {include: :hipsters}})
+    #am looking for a company and hipster, so I write it like this so I get ALL the jobs once including ALL the companies and the hipsters. Rather than individual hits to my db
   end
 
   post "/jobs" do
