@@ -35,7 +35,7 @@ class ApplicationController < Sinatra::Base
   patch '/jobs/:id' do
     job = Job.find(params[:id])
     job.update(
-      hipster_id: params[:hipster_id] #on the frontend, somehow will need to make sure I grab the id of the hipster being hired
+      hipster_id: params[:hipster_id] #on the frontend, somehow will need to make sure I grab the id of the hipster being hired. Idea: assign a random hipster number when the button is clicked (somehow include any new hipsters in the database)
     )
     job.to_json
   end
