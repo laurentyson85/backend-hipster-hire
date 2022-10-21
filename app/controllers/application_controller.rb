@@ -36,8 +36,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/hipsters' do
-    hipsters = Hipster.all
-    hipsters.to_json    
+    hipsters = Hipster.alpha_order.all
+    hipsters.to_json 
   end
 
   
