@@ -37,7 +37,7 @@ class ApplicationController < Sinatra::Base
 
   get '/hipsters' do
     hipsters = Hipster.alpha_order.all
-    hipsters.to_json 
+    hipsters.includes(jobs: :company).to_json(include:{jobs: {include: :company}})  
   end
 
   
@@ -46,6 +46,6 @@ class ApplicationController < Sinatra::Base
       name: params[:name],
       bio: params[:bio]
     )
-    hipster.to_json
+    hipster.to_json    
   end
 end

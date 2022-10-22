@@ -5,4 +5,5 @@ class Hipster < ActiveRecord::Base
     def self.alpha_order
         order(:name)
     end
+
 end
