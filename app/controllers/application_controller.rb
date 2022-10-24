@@ -5,7 +5,7 @@ class ApplicationController < Sinatra::Base
   
   get "/" do
     jobs = Job.alpha_order.all     
-    jobs.includes(:company).to_json(include: {company: {methods:[:hired_hipsters]}})    
+    jobs.to_json(include: {company: {methods:[:hired_hipsters]}})    
   end  
 
   post "/jobs" do
@@ -37,7 +37,7 @@ class ApplicationController < Sinatra::Base
 
   get '/hipsters' do
     hipsters = Hipster.alpha_order.all
-    hipsters.includes(jobs: :company).to_json(include:{jobs: {include: :company}})  
+    hipsters.to_json(methods:[:my_companies])
   end
 
   
