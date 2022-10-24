@@ -7,3 +7,5 @@ class Company < ActiveRecord::Base
       "Our company employs #{employees.count} hipsters." 
     end
   end
+
+  # TO DO: add hired_hipsters to controller in to_json
