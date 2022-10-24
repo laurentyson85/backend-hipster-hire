@@ -15,5 +15,3 @@ class Company < ActiveRecord::Base
     end
 
   end
-
-  # TO DO: add hired_hipsters to controller in to_json

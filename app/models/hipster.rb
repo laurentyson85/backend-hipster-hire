@@ -19,5 +19,3 @@ class Hipster < ActiveRecord::Base
     end
 
 end
-
-# TO DO: add my_companies to controller in to_json
