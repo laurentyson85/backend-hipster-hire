@@ -20,7 +20,7 @@ class ApplicationController < Sinatra::Base
       hipster_id: nil, 
       company_id: params[:company_id] 
     )
-    job.to_json
+    job.to_json(include: {company: {methods:[:hired_hipsters]}})
   end
 
   patch '/jobs/:id' do
@@ -29,7 +29,7 @@ class ApplicationController < Sinatra::Base
       hipster_id: params[:hipster_id],
       open: false
       )
-    job.to_json
+    job.to_json(include: {company: {methods:[:hired_hipsters]}})
   end
 
   delete '/jobs/:id' do
@@ -49,6 +49,6 @@ class ApplicationController < Sinatra::Base
       name: params[:name],
       bio: params[:bio]
     )
-    hipster.to_json    
+    hipster.to_json(methods:[:my_companies], include: :jobs)    
   end
 end
