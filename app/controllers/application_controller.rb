@@ -25,7 +25,10 @@ class ApplicationController < Sinatra::Base
 
   patch '/jobs/:id' do
     job = Job.find(params[:id])
-    job.update(hipster_id: params[:hipster_id])
+    job.update(
+      hipster_id: params[:hipster_id],
+      open: false
+      )
     job.to_json
   end
 
