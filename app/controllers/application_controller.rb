@@ -3,7 +3,7 @@ class ApplicationController < Sinatra::Base
   
   
   
-  get "/" do
+  get "/jobs" do
     jobs = Job.alpha_order.all     
     jobs.to_json(include: {company: {methods:[:hired_hipsters]}})    
   end  
