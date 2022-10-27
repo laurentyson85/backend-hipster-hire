@@ -1,10 +1,18 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'  
   
-  get "/hipsters" do
-    hipsters = Hipster.all    
-    hipsters.to_json(include: :jobs)    
-  end  
+  get "/jobs" do
+    jobs = Job.alpha_order.all    
+    jobs.to_json(include: :hipster)    
+  end
+  
+  post '/jobs' do
+    hipster = Hipster.create(
+      name: params[:name],
+      bio: params[:bio]
+    )
+    hipster.to_json    
+  end
 
   post "/jobs" do
     job = Job.create(
@@ -37,17 +45,8 @@ class ApplicationController < Sinatra::Base
     '{"success message": "Job has been deleted"}'
   end
 
-  # get '/hipsters' do
-  #   hipsters = Hipster.alpha_order.all
-  #   hipsters.to_json(methods:[:my_companies])
-  # end
-
-  
-  post '/hipsters' do
-    hipster = Hipster.create(
-      name: params[:name],
-      bio: params[:bio]
-    )
-    hipster.to_json    
-  end
+  get "/hipsters" do
+    hipsters = Hipster.all    
+    hipsters.to_json(include: :jobs)    
+  end  
 end
