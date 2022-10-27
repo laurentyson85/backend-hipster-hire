@@ -3,22 +3,23 @@ class ApplicationController < Sinatra::Base
   
   get "/jobs" do
     jobs = Job.alpha_order.all     
-    jobs.to_json(include: {company: {methods:[:hired_hipsters]}})    
+    jobs.to_json(include: :hipster)    
   end  
 
   post "/jobs" do
     job = Job.create(
       title: params[:title],
       position: params[:position],
-      field: params[:field],
       key_skill: params[:key_skill],
       employment: params[:employment],
       open: true, 
       expired: false, 
       hipster_id: nil, 
-      company_id: params[:company_id] 
+      company_name: params[:company_name],
+      company_slogan: params[:company_slogan],
+      company_logo_url: params[:company_logo_url]
     )
-    job.to_json(include: {company: {methods:[:hired_hipsters]}})
+    job.to_json(include: :hipster)
   end
 
   patch '/jobs/:id' do
@@ -27,7 +28,7 @@ class ApplicationController < Sinatra::Base
       hipster_id: params[:hipster_id],
       open: false
       )
-    job.to_json(include: {company: {methods:[:hired_hipsters]}})
+    job.to_json(include: :hipster)
   end
 
   delete '/jobs/:id' do
@@ -36,10 +37,10 @@ class ApplicationController < Sinatra::Base
     '{"success message": "Job has been deleted"}'
   end
 
-  get '/hipsters' do
-    hipsters = Hipster.alpha_order.all
-    hipsters.to_json(methods:[:my_companies])
-  end
+  # get '/hipsters' do
+  #   hipsters = Hipster.alpha_order.all
+  #   hipsters.to_json(methods:[:my_companies])
+  # end
 
   
   post '/hipsters' do
@@ -47,6 +48,6 @@ class ApplicationController < Sinatra::Base
       name: params[:name],
       bio: params[:bio]
     )
-    hipster.to_json(methods:[:my_companies])    
+    hipster.to_json    
   end
 end
