@@ -1,9 +1,9 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'  
   
-  get "/jobs" do
-    jobs = Job.alpha_order.all     
-    jobs.to_json(include: :hipster)    
+  get "/hipsters" do
+    hipsters = Hipster.all    
+    hipsters.to_json(includes: :jobs)    
   end  
 
   post "/jobs" do
