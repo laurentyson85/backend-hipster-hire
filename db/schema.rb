@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2022_10_19_010009) do
 
-  create_table "companies", force: :cascade do |t|
-    t.string "name"
-    t.string "industry"
-    t.string "slogan"
-    t.string "logo_url"
-  end
-
   create_table "hipsters", force: :cascade do |t|
     t.string "name"
     t.string "bio"
@@ -27,13 +20,14 @@ ActiveRecord::Schema.define(version: 2022_10_19_010009) do
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.string "position"
-    t.string "field"
     t.string "key_skill"
     t.string "employment"
     t.boolean "open"
     t.boolean "expired"
+    t.string "company_name"
+    t.string "company_slogan"
+    t.string "company_logo_url"
     t.integer "hipster_id"
-    t.integer "company_id"
   end
 
 end
