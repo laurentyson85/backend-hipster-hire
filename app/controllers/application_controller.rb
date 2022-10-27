@@ -3,7 +3,7 @@ class ApplicationController < Sinatra::Base
   
   get "/hipsters" do
     hipsters = Hipster.all    
-    hipsters.to_json(includes: :jobs)    
+    hipsters.to_json(include: :jobs)    
   end  
 
   post "/jobs" do
