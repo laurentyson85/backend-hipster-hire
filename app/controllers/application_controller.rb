@@ -47,7 +47,7 @@ class ApplicationController < Sinatra::Base
       name: params[:name],
       bio: params[:bio]
     )
-    hipsters.to_json(include: :jobs)
+    hipster.to_json(include: :jobs)
   end
 
 end
