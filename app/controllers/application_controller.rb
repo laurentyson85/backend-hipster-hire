@@ -16,8 +16,8 @@ class ApplicationController < Sinatra::Base
       expired: false, 
       hipster_id: nil, 
       company_name: params[:company_name],
-      company_slogan: params[:company_slogan],
-      company_logo_url: params[:company_logo_url]
+      company_slogan: Faker::Company.bs,
+      company_logo_url: Faker::Company.logo
     )
     job.to_json(include: :hipster)
   end
