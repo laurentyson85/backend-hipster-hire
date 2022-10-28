@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     jobs.to_json(include: :hipster)    
   end
   
-  post '/jobs' do
+  post '/hipsters' do
     hipster = Hipster.create(
       name: params[:name],
       bio: params[:bio]
