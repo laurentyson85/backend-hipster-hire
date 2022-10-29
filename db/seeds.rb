@@ -1,13 +1,13 @@
 puts "🌱 Seeding..."
 
-8.times do
+25.times do
     Job.create(
         title: Faker::Job.title,
         position: Faker::Job.position,
         key_skill: Faker::Job.key_skill,
         employment: Faker::Job.employment_type,
         open: true,
-        expired: false,
+        expired: Faker::Boolean.boolean(true_ratio: 0.2),
         hipster_id: nil,
         company_name: Faker::Company.name,
         company_slogan: Faker::Company.bs,
