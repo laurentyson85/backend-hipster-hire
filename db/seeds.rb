@@ -7,7 +7,7 @@ puts "🌱 Seeding..."
         key_skill: Faker::Job.key_skill,
         employment: Faker::Job.employment_type,
         open: true,
-        expired: Faker::Boolean.boolean(true_ratio: 0.2),
+        expired: false,
         hipster_id: nil,
         company_name: Faker::Company.name,
         company_slogan: Faker::Company.bs,
