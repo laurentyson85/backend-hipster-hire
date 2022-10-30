@@ -4,7 +4,16 @@ class ApplicationController < Sinatra::Base
   get "/jobs" do
     jobs = Job.alpha_order.all    
     jobs.to_json(include: :hipster)    
-  end   
+  end
+  
+  get '/hire_data' do 
+    hipsters = JSON.parse(Hipster.all.to_json(include: :jobs))
+    jobs = JSON.parse(Job.alpha_order.all.to_json(include: :hipster))
+    {
+      hipsters: hipsters,
+      jobs: jobs
+    }.to_json
+  end
   
   post "/jobs" do
     job = Job.create(
