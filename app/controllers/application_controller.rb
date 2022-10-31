@@ -1,10 +1,6 @@
 class ApplicationController < Sinatra::Base
-  set :default_content_type, 'application/json'  
-  
-  get "/jobs" do
-    jobs = Job.alpha_order.all    
-    jobs.to_json(include: :hipster)    
-  end  
+  set :default_content_type, 'application/json'    
+
 
   get '/hire_data' do 
     hipsters = JSON.parse(Hipster.all.to_json(include: :jobs))
@@ -49,12 +45,7 @@ class ApplicationController < Sinatra::Base
     job = Job.find(params[:id])
     job.destroy
     job.to_json
-  end
-
-  get "/hipsters" do
-    hipsters = Hipster.all    
-    hipsters.to_json(include: :jobs)    
-  end
+  end  
   
   post '/hipsters' do
     hipster = Hipster.create(
