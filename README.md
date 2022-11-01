@@ -1,15 +1,17 @@
 # Hipster Hire
+![Hipster Hire](https://i.makeagif.com/media/11-01-2022/LOLAoc.gif)
+
 
 ## Description
 Welcome to Hipster Hire. The fun job app that allows you to post a job and hire a hipster. 
 
-[Check out this two-minute video walkthrough of my app](https://youtu.be/ahUF_YHmy1Y) and [my blog post](https://dev.to/laurentyson85/constructing-search-filter-functionality-in-react-dnd) about the project; in the blog, I delve into some cool features!
+[Check out this two-minute video walkthrough of my app](https://youtu.be/S16O0Rn5WLo) and [my blog post](https://dev.to/laurentyson85/using-the-faker-gem-to-populate-your-database-5afe) about the project; in the blog, I delve into some cool features!
 
 
 ## Installation
 
 1. In a parent folder, please fork and clone this backend repository.
-2. Then, in the same parent folder, fork and clone [the frontend repository located here](https://github.com/laurentyson85/frontend-hipster-hire) 
+2. Then, in the same parent folder, fork and clone [the frontend repository located here](https://github.com/laurentyson85/frontend-hipster-hire). 
 
 
 ## Usage
