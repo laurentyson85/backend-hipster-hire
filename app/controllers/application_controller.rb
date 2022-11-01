@@ -4,7 +4,7 @@ class ApplicationController < Sinatra::Base
 
   get '/hire_data' do 
     hipsters = JSON.parse(Hipster.all.to_json(include: :jobs))
-    jobs = JSON.parse(Job.alpha_order.all.to_json(include: :hipster))
+    jobs = Job.where(hipster_id: nil)
     {
       hipsters: hipsters,
       jobs: jobs
@@ -32,8 +32,7 @@ class ApplicationController < Sinatra::Base
     job.update(
       hipster_id: params[:hipster_id],
       open: false
-      )
-    job = JSON.parse(Job.find(params[:id]).to_json(include: :hipster))  
+      )    
     hipster = JSON.parse(Hipster.find(params[:hipster_id]).to_json(include: :jobs))
     {
       hipster: hipster,
